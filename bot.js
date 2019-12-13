@@ -1,4 +1,15 @@
 const Discord = require('discord.js');
+const express = require('express');
+const keepalive = require('express-glitch-keepalive');
+const app = express();
+app.use(keepalive);
+app.get('/', (req, res) => {
+res.json('Бот запущен!');
+});
+app.get("/", (request, response) => {
+response.sendStatus(200);
+});
+app.listen(process.env.PORT);
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const fs = require('fs');
